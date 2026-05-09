@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>SJF vs Priority Scheduling Simulator</title>
+  <meta name="description" content="Interactive CPU Scheduling Simulator comparing SJF and Preemptive Priority Scheduling with Gantt charts and performance metrics."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="scheduler.css"/>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-inner">
+    <div class="pill-badge">⚙️ Operating Systems · CPU Scheduling</div>
+    <h1><span class="g-cyan">SJF</span> <span class="vs">vs</span> <span class="g-purple">Priority</span></h1>
+    <p class="hero-sub">Scheduling Simulator &amp; Comparison Engine</p>
+    <div class="hero-tags">
+      <span class="tag tag-cyan">⚡ SJF · Non-Preemptive</span>
+      <span class="tag tag-purple">🎯 Priority · Preemptive · Lower # = Higher</span>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- INPUT PANEL -->
+  <section class="card" id="input-panel">
+    <div class="card-hdr">
+      <div class="card-hdr-icon">📋</div>
+      <div><h2>Input Panel</h2><p>Define processes and workload parameters</p></div>
+    </div>
+
+    <div class="scenario-bar">
+      <span class="s-label">Quick Scenarios:</span>
+      <button class="s-btn" onclick="loadScenario('A')">A · Mixed</button>
+      <button class="s-btn" onclick="loadScenario('B')">B · Conflict</button>
+      <button class="s-btn" onclick="loadScenario('C')">C · Starvation</button>
+      <button class="s-btn s-btn-warn" onclick="loadScenario('D')">D · Validation</button>
+      <button class="s-btn s-btn-red" onclick="clearAll()">✕ Clear</button>
+    </div>
+
+    <div class="input-form">
+      <div class="form-row">
+        <div class="fg">
+          <label for="i-pid">Process ID</label>
+          <input id="i-pid" type="text" placeholder="e.g. P1" maxlength="6"/>
+        </div>
+        <div class="fg">
+          <label for="i-at">Arrival Time</label>
+          <input id="i-at" type="number" placeholder="≥ 0" min="0"/>
+        </div>
+        <div class="fg">
+          <label for="i-bt">Burst Time</label>
+          <input id="i-bt" type="number" placeholder="≥ 1" min="1"/>
+        </div>
+        <div class="fg">
+          <label for="i-pr">Priority <small>(1=highest)</small></label>
+          <input id="i-pr" type="number" placeholder="1–99" min="1" max="99"/>
+        </div>
+        <div class="fg fg-btn">
+          <button class="btn-add" onclick="addProcess()">＋ Add</button>
+        </div>
+      </div>
+      <div class="err-msg" id="err-msg"></div>
+    </div>
+
+    <div class="tbl-section">
+      <div class="tbl-label">Process Table</div>
+      <div class="tbl-wrap">
+        <table id="proc-table">
+          <thead>
+            <tr><th>PID</th><th>Arrival</th><th>Burst</th><th>Priority</th><th></th></tr>
+          </thead>
+          <tbody id="proc-tbody"></tbody>
+        </table>
+      </div>
+      <div class="empty-hint" id="empty-hint">📭 No processes yet — add above or load a scenario.</div>
+    </div>
+
+    <div class="run-bar">
+      <button class="btn-run" id="btn-run" onclick="runSimulation()">▶ Run Simulation</button>
+      <span class="run-hint" id="run-hint">Add at least 2 processes</span>
+    </div>
+  </section>
+
+  <!-- RESULTS -->
+  <div id="results" class="hidden">
+
+    <!-- SJF -->
+    <section class="card algo-card sjf-card">
+      <div class="card-hdr">
+        <div class="card-hdr-icon ci-cyan">⚡</div>
+        <div><h2>Shortest Job First (SJF)</h2><p>Non-Preemptive · Selects shortest burst at each dispatch point</p></div>
+      </div>
+      <div class="gantt-block">
+        <div class="block-label">Gantt Chart — SJF</div>
+        <div class="gantt-scroll"><div class="gantt" id="gantt-sjf"></div><div class="timeline" id="tl-sjf"></div></div>
+      </div>
+      <div class="block-label">Results Table — SJF</div>
+      <div class="tbl-wrap">
+        <table class="res-tbl">
+          <thead><tr><th>PID</th><th>AT</th><th>BT</th><th>Priority</th><th>Start</th><th>Finish</th><th>WT</th><th>TAT</th><th>RT</th></tr></thead>
+          <tbody id="res-sjf"></tbody>
+          <tfoot id="foot-sjf"></tfoot>
+        </table>
+      </div>
+    </section>
+
+    <!-- PRIORITY -->
+    <section class="card algo-card pri-card">
+      <div class="card-hdr">
+        <div class="card-hdr-icon ci-purple">🎯</div>
+        <div><h2>Priority Scheduling</h2><p>Preemptive · Lower number = Higher priority · Ties: arrival time → PID</p></div>
+      </div>
+      <div class="gantt-block">
+        <div class="block-label">Gantt Chart — Priority</div>
+        <div class="gantt-scroll"><div class="gantt" id="gantt-pri"></div><div class="timeline" id="tl-pri"></div></div>
+      </div>
+      <div class="block-label">Results Table — Priority</div>
+      <div class="tbl-wrap">
+        <table class="res-tbl">
+          <thead><tr><th>PID</th><th>AT</th><th>BT</th><th>Priority</th><th>Start</th><th>Finish</th><th>WT</th><th>TAT</th><th>RT</th></tr></thead>
+          <tbody id="res-pri"></tbody>
+          <tfoot id="foot-pri"></tfoot>
+        </table>
+      </div>
+    </section>
+
+    <!-- COMPARISON -->
+    <section class="card" id="comparison-card">
+      <div class="card-hdr">
+        <div class="card-hdr-icon">📊</div>
+        <div><h2>Comparison Summary</h2><p>Side-by-side analysis on the same workload</p></div>
+      </div>
+      <div class="kpi-row" id="kpi-row"></div>
+      <div class="bar-section" id="bar-section"></div>
+      <div class="block-label" style="margin-top:2rem">Required Analysis Questions</div>
+      <div class="analysis-grid" id="analysis-grid"></div>
+    </section>
+
+    <!-- CONCLUSION -->
+    <section class="card" id="conclusion-card">
+      <div class="card-hdr">
+        <div class="card-hdr-icon">🏆</div>
+        <div><h2>Final Conclusion</h2><p>Technical verdict and recommendation</p></div>
+      </div>
+      <div id="conclusion-body"></div>
+    </section>
+
+  </div><!-- /results -->
+</main>
+
+<footer>
+  <p>Operating Systems Course · CPU Scheduling Comparison · SJF vs Preemptive Priority</p>
+</footer>
+
+<script src="scheduler.js"></script>
+</body>
+</html>

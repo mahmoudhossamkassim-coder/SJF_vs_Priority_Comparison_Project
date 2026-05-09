@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SJF vs Priority Scheduling</title>
+  <link rel="stylesheet" href="scheduler.css"/>
+</head>
+<body>
+
+<div class="header">
+  <h1>SJF vs Priority Scheduling Simulator</h1>
+  <p>CPU Scheduling Comparison — C4 Project</p>
+  <p class="rule">Priority Rule: Lower number = Higher priority &nbsp;|&nbsp; Tie-breaking: Earlier arrival time wins &nbsp;|&nbsp; Both algorithms: Non-Preemptive</p>
+</div>
+
+<div class="main">
+
+  <!-- INPUT PANEL -->
+  <div class="card" id="input-section">
+    <h2>Input Panel</h2>
+
+    <div class="scenario-bar">
+      <span>Scenario Hints:</span>
+      <button onclick="loadScenario('A')">Scenario A</button>
+      <button onclick="loadScenario('B')">Scenario B</button>
+      <button onclick="loadScenario('C')">Scenario C</button>
+      <button class="btn-warn" onclick="loadScenario('D')">Scenario D</button>
+      <button class="btn-blue" onclick="resetInputs()">Reset Fields</button>
+      <button class="btn-red" onclick="deleteData()">Delete Data</button>
+    </div>
+
+    <div class="form-row">
+      <div class="field">
+        <label>Process ID</label>
+        <input id="i-pid" type="text" placeholder="e.g. P1"/>
+      </div>
+      <div class="field">
+        <label>Arrival Time</label>
+        <input id="i-at" type="number" placeholder="≥ 0"/>
+      </div>
+      <div class="field">
+        <label>Burst Time</label>
+        <input id="i-bt" type="number" placeholder="> 0"/>
+      </div>
+      <div class="field">
+        <label>Priority (1 = highest)</label>
+        <input id="i-pr" type="number" placeholder="1–99"/>
+      </div>
+      <button class="btn-add" onclick="addProcess()">+ Add</button>
+    </div>
+
+    <div id="err-msg" class="err-msg"></div>
+
+    <h3>Process Table</h3>
+    <table id="proc-table">
+      <thead>
+        <tr>
+          <th>PID</th><th>Arrival Time</th><th>Burst Time</th><th>Priority</th><th>Remove</th>
+        </tr>
+      </thead>
+      <tbody id="proc-tbody"></tbody>
+    </table>
+    <p id="empty-hint" class="hint">No processes added yet.</p>
+
+    <div class="run-bar">
+      <button class="btn-run" onclick="runSimulation()">▶ Run Simulation</button>
+    </div>
+  </div>
+
+  <!-- GANTT CHARTS -->
+  <div id="gantt-section" class="hidden">
+    <div class="card">
+      <h2>Gantt Chart — SJF (Non-Preemptive)</h2>
+      <div class="gantt-wrap">
+        <div id="gantt-sjf" class="gantt"></div>
+        <div id="tl-sjf" class="timeline"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Gantt Chart — Priority (Non-Preemptive)</h2>
+      <div class="gantt-wrap">
+        <div id="gantt-pri" class="gantt"></div>
+        <div id="tl-pri" class="timeline"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RESULTS SIDE BY SIDE -->
+  <div id="results-section" class="hidden">
+    <div class="card">
+      <h2>Results Table</h2>
+      <div class="results-grid">
+        <div>
+          <h3>SJF Results</h3>
+          <table class="res-tbl">
+            <thead>
+              <tr><th>PID</th><th>AT</th><th>BT</th><th>Priority</th><th>CT</th><th>WT</th><th>TAT</th><th>RT</th></tr>
+            </thead>
+            <tbody id="res-sjf"></tbody>
+            <tfoot id="foot-sjf"></tfoot>
+          </table>
+        </div>
+        <div>
+          <h3>Priority Results</h3>
+          <table class="res-tbl">
+            <thead>
+              <tr><th>PID</th><th>AT</th><th>BT</th><th>Priority</th><th>CT</th><th>WT</th><th>TAT</th><th>RT</th></tr>
+            </thead>
+            <tbody id="res-pri"></tbody>
+            <tfoot id="foot-pri"></tfoot>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMPARISON SUMMARY -->
+  <div id="comparison-section" class="hidden">
+    <div class="card">
+      <h2>Comparison Summary</h2>
+      <table class="comp-tbl">
+        <thead>
+          <tr><th>Metric</th><th>SJF Avg</th><th>Priority Avg</th><th>Winner</th></tr>
+        </thead>
+        <tbody id="comp-tbody"></tbody>
+      </table>
+      <div id="analysis-box" class="analysis-box"></div>
+    </div>
+
+    <div class="card">
+      <h2>Final Conclusion</h2>
+      <div id="conclusion-box"></div>
+    </div>
+  </div>
+
+  <!-- VALIDATION DEMO -->
+  <div id="validation-section" class="hidden">
+    <div class="card">
+      <h2>Scenario D — Validation Cases</h2>
+      <p class="hint">The following invalid inputs are rejected by the simulator. Try them yourself using the form above.</p>
+      <table class="res-tbl">
+        <thead><tr><th>Invalid Input</th><th>Error Message</th></tr></thead>
+        <tbody>
+          <tr><td>Arrival Time = -3</td><td>Arrival Time cannot be negative.</td></tr>
+          <tr><td>Burst Time = 0</td><td>Burst Time must be greater than zero.</td></tr>
+          <tr><td>Burst Time = -5</td><td>Burst Time must be greater than zero.</td></tr>
+          <tr><td>Priority = "abc"</td><td>All numeric fields must be numbers.</td></tr>
+          <tr><td>Duplicate PID "P1"</td><td>Duplicate Process ID — each process must be unique.</td></tr>
+          <tr><td>Missing any field</td><td>All fields are required.</td></tr>
+          <tr><td>Priority = 0</td><td>Priority must be a positive integer (1–99).</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div><!-- /main -->
+
+<script src="scheduler.js"></script>
+</body>
+</html>

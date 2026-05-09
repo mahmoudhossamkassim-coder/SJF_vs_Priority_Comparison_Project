@@ -1,0 +1,398 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #0d1117;
+  color: #e6edf3;
+  padding: 20px;
+}
+
+.header {
+  background: #1a1a2e;
+  color: white;
+  text-align: center;
+  padding: 28px 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.header h1 {
+  font-size: 1.7rem;
+  margin-bottom: 6px;
+}
+
+.header p {
+  color: #aaa;
+  font-size: 0.9rem;
+  margin-top: 4px;
+}
+
+.header .rule {
+  margin-top: 10px;
+  font-size: 0.82rem;
+  color: #f0c040;
+  background: rgba(240,192,64,0.1);
+  display: inline-block;
+  padding: 5px 14px;
+  border-radius: 20px;
+  border: 1px solid rgba(240,192,64,0.3);
+}
+
+.main {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.card {
+  background: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 10px;
+  padding: 22px;
+  margin-bottom: 18px;
+}
+
+.card h2 {
+  font-size: 1.1rem;
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #30363d;
+  color: #58a6ff;
+}
+
+.card h3 {
+  font-size: 0.95rem;
+  margin: 14px 0 8px;
+  color: #cdd9e5;
+}
+
+/* SCENARIO BAR */
+.scenario-bar {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.scenario-bar span {
+  font-size: 0.88rem;
+  color: #8b949e;
+}
+
+.scenario-bar button {
+  padding: 6px 14px;
+  border: 1px solid #30363d;
+  border-radius: 6px;
+  background: #161b22;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: all 0.15s;
+}
+
+.scenario-bar button:hover {
+  background: #1a1a2e;
+  color: white;
+  border-color: #58a6ff;
+}
+
+.btn-warn {
+  border-color: #e67e22 !important;
+  color: #e67e22 !important;
+}
+
+.btn-warn:hover {
+  background: #e67e22 !important;
+  color: white !important;
+}
+
+.btn-red {
+  border-color: #e74c3c !important;
+  color: #e74c3c !important;
+  margin-left: auto;
+}
+
+.btn-red:hover {
+  background: #e74c3c !important;
+  color: white !important;
+}
+
+/* FORM */
+.form-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  margin-bottom: 10px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 130px;
+}
+
+.field label {
+  font-size: 0.82rem;
+  color: #8b949e;
+  margin-bottom: 4px;
+}
+
+.field input {
+  padding: 9px 12px;
+  border: 1px solid #30363d;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  transition: border-color 0.15s;
+}
+
+.field input:focus {
+  outline: none;
+  border-color: #58a6ff;
+}
+
+.btn-add {
+  padding: 9px 20px;
+  background: #1a1a2e;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  font-weight: bold;
+  height: 38px;
+  align-self: flex-end;
+  transition: opacity 0.15s;
+}
+
+.btn-add:hover { opacity: 0.85; }
+
+.err-msg {
+  color: #e74c3c;
+  font-size: 0.88rem;
+  min-height: 20px;
+  margin-bottom: 8px;
+}
+
+/* TABLES */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+}
+
+th {
+  background: #21262d;
+  padding: 9px 10px;
+  text-align: left;
+  border-bottom: 2px solid #30363d;
+  font-size: 0.8rem;
+  color: #8b949e;
+  text-transform: uppercase;
+}
+
+td {
+  padding: 9px 10px;
+  border-bottom: 1px solid #21262d;
+}
+
+tr:hover td { background: #1c2128; }
+
+tfoot td {
+  font-weight: bold;
+  background: #2d2a1a;
+  color: #d29922;
+}
+
+.del-btn {
+  background: transparent;
+  border: 1px solid #e74c3c;
+  color: #e74c3c;
+  border-radius: 4px;
+  padding: 3px 8px;
+  cursor: pointer;
+  font-size: 0.8rem;
+}
+
+.del-btn:hover { background: #fdecea; }
+
+.hint {
+  color: #6e7681;
+  font-size: 0.88rem;
+  margin-top: 8px;
+}
+
+/* RUN */
+.run-bar {
+  text-align: center;
+  margin-top: 16px;
+}
+
+.btn-run {
+  padding: 11px 40px;
+  background: #27ae60;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.btn-run:hover { opacity: 0.85; }
+
+/* GANTT */
+.gantt-wrap {
+  overflow-x: auto;
+  padding-bottom: 8px;
+}
+
+.gantt {
+  display: flex;
+  min-height: 56px;
+  margin-bottom: 4px;
+}
+
+.g-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 36px;
+  padding: 4px;
+  background: #3498db;
+  border-right: 2px solid white;
+  color: white;
+}
+
+.g-block span {
+  font-weight: bold;
+  font-size: 0.85rem;
+}
+
+.g-block small {
+  font-size: 0.65rem;
+  opacity: 0.85;
+}
+
+.g-idle {
+  background: #bdc3c7 !important;
+  color: #555 !important;
+}
+
+.timeline {
+  position: relative;
+  height: 20px;
+  margin-bottom: 8px;
+}
+
+.tl-mark {
+  position: absolute;
+  font-size: 0.7rem;
+  color: #6e7681;
+  transform: translateX(-50%);
+}
+
+/* RESULTS SIDE BY SIDE */
+.results-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+@media (max-width: 700px) {
+  .results-grid { grid-template-columns: 1fr; }
+}
+
+/* COMPARISON */
+.comp-tbl td, .comp-tbl th {
+  padding: 9px 14px;
+}
+
+.winner {
+  color: #27ae60;
+  font-weight: bold;
+}
+
+.analysis-box {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.analysis-box p {
+  padding: 9px 14px;
+  background: #1c2128;
+  border-left: 3px solid #30363d;
+  border-radius: 0 6px 6px 0;
+  font-size: 0.9rem;
+}
+
+/* CONCLUSION */
+#conclusion-box ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+#conclusion-box li {
+  padding: 10px 14px;
+  background: #1c2128;
+  border-radius: 6px;
+  border: 1px solid #30363d;
+  font-size: 0.9rem;
+}
+
+.highlight {
+  color: #27ae60;
+  font-weight: bold;
+}
+
+.hidden { display: none; }
+
+/* VALIDATION */
+.res-tbl td, .res-tbl th {
+  padding: 8px 12px;
+}
+
+/* Dark mode overrides */
+.field input {
+  background: #0d1117;
+  color: #e6edf3;
+  border: 1px solid #30363d;
+}
+.field input:focus {
+  border-color: #58a6ff;
+}
+.field label {
+  color: #8b949e;
+}
+th {
+  color: #8b949e;
+}
+.scenario-bar button {
+  background: #161b22;
+  color: #e6edf3;
+  border: 1px solid #30363d;
+}
+.scenario-bar button:hover {
+  background: #58a6ff;
+  color: #000;
+  border-color: #58a6ff;
+}
+
+.btn-blue {
+  border-color: #58a6ff !important;
+  color: #58a6ff !important;
+}
+.btn-blue:hover {
+  background: #58a6ff !important;
+  color: #000 !important;
+}
