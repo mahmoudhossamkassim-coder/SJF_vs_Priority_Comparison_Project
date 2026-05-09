@@ -2,13 +2,15 @@
 
 ### &#x09;		   **CPU Scheduling Comparison Project Documentation**
 
-
+&#x09;					\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*
 
 
 
 
 
 #### ***1. Project Overview:***
+
+\-------------------------------------
 
 
 
@@ -18,11 +20,13 @@ The system allows users to enter processes with arrival time, burst time, and pr
 
 
 
-
+***\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_***
 
 
 
 #### ***2. Technologies Used:***
+
+\--------------------------------------
 
 
 
@@ -34,11 +38,13 @@ The system allows users to enter processes with arrival time, burst time, and pr
 
 
 
-
+***\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_***
 
 
 
 #### ***3. Main Features:***
+
+\----------------------------------
 
 
 
@@ -60,9 +66,13 @@ The system allows users to enter processes with arrival time, burst time, and pr
 
 
 
+***\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_***
+
 
 
 #### ***4. Scheduling Algorithms:***
+
+\----------------------------------------------
 
 
 
@@ -76,11 +86,13 @@ Priority Scheduling selects the process with the highest priority first. In this
 
 
 
+***\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_***
+
 
 
 #### ***5.Run Instructions:***
 
-
+\------------------------------------
 
 
 
@@ -114,9 +126,123 @@ Since this is a static web project, all you need is a web browser (Chrome, Firef
 
 
 
+***\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_***
 
 
-#### ***6. Team Names:***
+
+#### ***6.Calculated Metrics:***
+
+***--------------------------------------***
+
+
+
+• Completion Time (CT): The absolute time on the timeline when a
+
+process completely finishes its execution.
+
+• Waiting Time (WT): The total time a process spends waiting in the ready
+
+queue before and during execution. Calculated as WT = CT - Arrival Time
+
+\- Burst Time.
+
+• Turnaround Time (TAT): The total time taken from the process's arrival to
+
+its complete execution. Calculated as TAT = CT - Arrival Time.
+
+• Response Time (RT): The time elapsed from when a process arrives to
+
+the first time it is allocated the CPU. Calculated as RT = Start Time -
+
+Arrival Time.
+
+• Averages: The system computes the Average Waiting Time, Average
+
+Turnaround Time, and Average Response Time across all processes to
+
+determine the overall efficiency of the algorithm.
+
+
+
+***\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_***
+
+
+
+#### ***7.Project Utilities \& Features:***
+
+***--------------------------------------------------------***
+
+
+
+**1) Algorithm Simulation: Executes non-preemptive Shortest Job First (SJF) and**
+
+**non-preemptive Priority Scheduling, utilizing custom tie-breaking logic (earlier**
+
+**arrival time wins).**
+
+
+
+**2) Dynamic Gantt Chart Generation: Visually maps out the CPU timeline,**
+
+**rendering scaled blocks for each process execution phase and clearly**
+
+**marking CPU "Idle" periods.**
+
+
+
+**3) Interactive Input \& Strict Validation: Allows users to build custom**
+
+**workloads with process IDs, arrival times, burst times, and priority levels. The**
+
+**system includes robust validation to reject duplicate IDs, negative arrival**
+
+**times, zero/negative burst times, and non-numeric inputs.**
+
+
+
+**4) Pre-loaded Test Scenarios: Features built-in workload scenarios to quickly**
+
+**demonstrate specific scheduling concepts:**
+
+**• Scenario A (Mixed Workload): Standard test with varied arrivals and**
+
+**bursts.**
+
+**• Scenario B (Conflict): Pits a short-burst/low-priority job against a longburst/high-priority job.**
+
+**• Scenario C (Starvation): Demonstrates how lower-priority jobs can be**
+
+**indefinitely delayed (starved) by continuous higher-priority arrivals.**
+
+
+
+**5) Automated Comparison Engine: Displays results side-by-side and**
+
+**automatically calculates the "winner" for each metric (lowest average WT, TAT,**
+
+**and RT).**
+
+
+
+**6) Analytical Conclusion Generation: Synthesizes the data to answer**
+
+**conceptual questions. It assesses if SJF actually favored short jobs, flags**
+
+**potential starvation risks in the Priority algorithm, evaluates the "fairer"**
+
+**algorithm based on maximum wait times, and provides a final**
+
+**recommendation on which algorithm suits the given workload best.**
+
+
+
+**\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_**
+
+#### 
+
+#### ***8. Team Names:***
+
+\--------------------------
 
 
 
@@ -126,10 +252,4 @@ Since this is a static web project, all you need is a web browser (Chrome, Firef
 4. Alaa Awad Ahmed Mohammed (20240147)
 5. Ziad Yasser (20240393)
 6. Seif Ahmed Saad (20240452)
-
-
-
-
-
-
 
