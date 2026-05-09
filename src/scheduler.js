@@ -1,16 +1,8 @@
-// =============================================
-// SJF vs Priority Scheduling Simulator
-// Both algorithms: Non-Preemptive
-// Priority Rule: Lower number = Higher priority
-// Tie-breaking: Earlier arrival time wins
-// =============================================
+
 
 var processes = [];
 
-// ── SCENARIOS ──────────────────────────────
-// Scenario A: Basic mixed workload - different arrival times and burst times
-// Scenario B: Conflict - short-burst low-priority vs long-burst high-priority
-// Scenario C: Starvation sensitive - one process waits much longer under Priority
+//SCENARIOS
 
 var SCENARIOS = {
   A: [
@@ -74,7 +66,7 @@ function hideResults() {
   document.getElementById('validation-section').classList.add('hidden');
 }
 
-// ── VALIDATION & ADD ───────────────────────
+// VALIDATION & ADD 
 function showErr(msg) {
   document.getElementById('err-msg').textContent = msg;
 }
@@ -154,9 +146,7 @@ function renderTable() {
   }
 }
 
-// ── SJF — NON-PREEMPTIVE ───────────────────
-// At each step, pick the process with the shortest burst time
-// from those that have already arrived. Ties: earlier arrival wins.
+// SJF NON-PREEMPTIVE 
 function runSJF(procs) {
   var jobs = procs.map(function(p) {
     return { pid: p.pid, at: p.at, bt: p.bt, pr: p.pr,
@@ -175,7 +165,6 @@ function runSJF(procs) {
       if (!jobs[i].done && jobs[i].at <= time) ready.push(jobs[i]);
     }
 
-    // Nobody arrived yet — CPU idle
     if (ready.length === 0) {
       var nextAT = Infinity;
       for (var i = 0; i < jobs.length; i++) {
@@ -186,7 +175,7 @@ function runSJF(procs) {
       continue;
     }
 
-    // Sort by burst time, then arrival time (tie-break)
+    // Sort by burst time
     ready.sort(function(a, b) {
       if (a.bt !== b.bt) return a.bt - b.bt;
       return a.at - b.at;
@@ -204,9 +193,7 @@ function runSJF(procs) {
   return { gantt: gantt, jobs: jobs };
 }
 
-// ── PRIORITY — NON-PREEMPTIVE ──────────────
-// At each step, pick the process with the highest priority (lowest number)
-// from those that have already arrived. Ties: earlier arrival wins.
+// PRIORITY  NON-PREEMPTIVE
 function runPriority(procs) {
   var jobs = procs.map(function(p) {
     return { pid: p.pid, at: p.at, bt: p.bt, pr: p.pr,
@@ -219,13 +206,11 @@ function runPriority(procs) {
 
   while (completed < jobs.length) {
 
-    // Find all arrived and not done
     var ready = [];
     for (var i = 0; i < jobs.length; i++) {
       if (!jobs[i].done && jobs[i].at <= time) ready.push(jobs[i]);
     }
 
-    // Nobody arrived yet — CPU idle
     if (ready.length === 0) {
       var nextAT = Infinity;
       for (var i = 0; i < jobs.length; i++) {
@@ -236,7 +221,7 @@ function runPriority(procs) {
       continue;
     }
 
-    // Sort by priority (lower = higher), then arrival time (tie-break)
+    // Sort by priority
     ready.sort(function(a, b) {
       if (a.pr !== b.pr) return a.pr - b.pr;
       return a.at - b.at;
@@ -254,7 +239,7 @@ function runPriority(procs) {
   return { gantt: gantt, jobs: jobs };
 }
 
-// ── METRICS ────────────────────────────────
+// METRICS 
 function calcMetrics(jobs) {
   return jobs.map(function(j) {
     return {
@@ -276,7 +261,7 @@ function average(arr, key) {
   return sum / arr.length;
 }
 
-// ── GANTT RENDER ───────────────────────────
+// GANTT RENDER 
 function renderGantt(ganttId, tlId, gantt) {
   var total = gantt[gantt.length - 1].end - gantt[0].start;
   var scale = Math.max(30, Math.min(80, 700 / total));
@@ -315,7 +300,7 @@ function renderGantt(ganttId, tlId, gantt) {
   }
 }
 
-// ── RESULTS TABLE RENDER ───────────────────
+//RESULTS TABLE RENDER
 function renderResults(tbodyId, tfootId, metrics) {
   var tbody = document.getElementById(tbodyId);
   var tfoot = document.getElementById(tfootId);
@@ -347,7 +332,7 @@ function renderResults(tbodyId, tfootId, metrics) {
     '</tr>';
 }
 
-// ── COMPARISON & CONCLUSION ────────────────
+//COMPARISON & CONCLUSION 
 function renderComparison(mSJF, mPRI) {
   var s = {
     wt:  +average(mSJF, 'wt').toFixed(2),
@@ -414,7 +399,7 @@ function renderComparison(mSJF, mPRI) {
     '</ul>';
 }
 
-// ── MAIN ───────────────────────────────────
+//MAIN 
 function runSimulation() {
   if (processes.length < 2) {
     return showErr('Please add at least 2 processes.');
@@ -440,7 +425,7 @@ function runSimulation() {
   document.getElementById('gantt-section').scrollIntoView({ behavior: 'smooth' });
 }
 
-// Enter key support
+// Enter key 
 document.addEventListener('DOMContentLoaded', function() {
   renderTable();
   var fields = ['i-pid', 'i-at', 'i-bt', 'i-pr'];
