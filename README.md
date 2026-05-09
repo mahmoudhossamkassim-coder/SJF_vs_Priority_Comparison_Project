@@ -240,7 +240,115 @@ determine the overall efficiency of the algorithm.
 
 #### 
 
-#### ***8. Team Names:***
+#### ***8.Requirments:***
+
+***---------------------------***
+
+1)Required Functionality:
+
+• Accept a dynamic number of processes and all required process data at runtime.
+
+• Validate all input safely before simulation begins.
+
+• Implement SJF correctly; unless otherwise instructed, SJF should be non-preemptive.
+
+• Implement Priority Scheduling correctly, with a clearly stated priority rule and documented tie handling.
+
+• Display separate Gantt charts and separate metrics tables for both algorithms.
+
+• Calculate WT, TAT, RT, average WT, average TAT, and average RT
+
+
+
+2.Required Comparison Focus
+
+• How SJF behaves when a short job has low priority.
+
+• How Priority behaves when a long job has very high priority.
+
+• Whether SJF improves average waiting or turnaround time.
+
+• Whether Priority improves service for urgent processes.
+
+• Whether either algorithm causes unfair delay.
+
+
+
+3\)Required Interface Sections
+
+• Input Panel
+
+• Process Table
+
+• Priority Input Area
+
+• Gantt Chart for SJF
+
+• Gantt Chart for Priority
+
+• Results Table for SJF
+
+• Results Table for Priority
+
+• Comparison Summary Section
+
+• Final Conclusion Area
+
+
+
+4)Required Test Scenarios
+
+Scenario A: Basic mixed workload
+
+• Use a normal workload with different arrival times and burst times.
+
+Scenario B: Conflict between burst time and priority
+
+• Include a short-burst low-priority process and a long-burst high-priority process to reveal a meaningful
+
+difference.
+
+Scenario C: Fairness or starvation-sensitive case
+
+• Prepare a workload where one process may wait much longer under one of the algorithms.
+
+Operating Systems Course | Scheduling Comparison Projects
+
+Scenario D: Validation case
+
+• Include at least one invalid input example and show the validation behavior.
+
+
+
+5)Required Analysis Questions
+
+• Which algorithm gave lower average waiting time?
+
+• Which algorithm gave lower average turnaround time?
+
+• Did SJF favor short jobs more strongly?
+
+• Did Priority Scheduling favor urgent processes more strongly?
+
+• Was any starvation or unfair delay observed?
+
+• Which algorithm would you recommend for the tested workload, and why?
+
+
+
+6)Required Conclusion
+
+• State which algorithm performed better on the selected datasets.
+
+• State which metric each algorithm handled better.
+
+• Explain the trade-off between efficiency and urgency.
+
+• State which algorithm appeared fairer in practice.
+
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+
+#### ***9. Team Names:***
 
 \--------------------------
 
